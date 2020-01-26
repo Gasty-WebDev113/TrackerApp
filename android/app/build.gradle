@@ -132,6 +132,7 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
+        missingDimensionStrategy "RNN.reactNativeVersion", "reactNative60" // See note below!
         versionName "1.0"
     }
     splits {
@@ -179,10 +180,11 @@ android {
 }
 
 dependencies {
-    implementation project(':react-native-svg')
+    
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation project(':react-native-svg') //Svg
     implementation "com.facebook.react:react-native:+"  // From node_modules
+    implementation project(':react-native-navigation')
+    implementation project(':react-native-svg') //Svg
 
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermes-engine/android/";

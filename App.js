@@ -8,9 +8,11 @@ import {CircularProgress} from './src/components/CircularProgress'
 const App = () => {
 
   return (
-    <>
+    <View style={{flexDirection: "row"}}>
       <CircularProgress />
-    </>
+      <CircularProgress />
+      <CircularProgress />
+    </View>
   );
 };
 

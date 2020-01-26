@@ -12,10 +12,14 @@ export const CircularProgress = () => {
     const radius = (size - 50) / 2
     const circunference = radius * 2 * Math.PI
 
+    const ProgressLimiter = () => {
+        progress !== 100 ? setProgress(progress + 10) : null
+    }
+
     return(
-        <Container style={styles.bigBlue}>
+        <Container>
             <NativeText>{progress} / 100</NativeText>
-            <TouchableOpacity onPress={() => setProgress(progress + 10)}>
+            <TouchableOpacity onPress={() => ProgressLimiter()}>
                 <Svg height="100%" width="100%" viewBox="0 0 100 100">
                     
                     <Circle
@@ -39,15 +43,18 @@ export const CircularProgress = () => {
                     <Text
                         fill="white"
                         stroke="none"
-                        fontSize="20"
+                        fontSize="15"
                         fontWeight="bold"
                         x="50"
                         y="55"
                         textAnchor="middle"
-                        >{progress}
+                        >Reading
                     </Text>
                     
                 </Svg>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setProgress(progress - 10)}>
+                <NativeText>-</NativeText>
             </TouchableOpacity>
         </Container>
     )}
