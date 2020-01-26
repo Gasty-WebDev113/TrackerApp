@@ -179,7 +179,9 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-svg')
     implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation project(':react-native-svg') //Svg
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
     if (enableHermes) {

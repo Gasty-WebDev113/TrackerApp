@@ -5,8 +5,12 @@ import (
 )
 
 func RestApi(c *gin.Context){ //Gender Context
+	name := c.Query("name") //Query the data
+	age := c.Query("age")
+
 	c.JSON(200, gin.H{
-		"message": "Hello World with GOooo",
+		"Name": name,
+		"Age": age,
 	})
 }
 
