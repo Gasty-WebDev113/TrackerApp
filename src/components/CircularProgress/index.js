@@ -1,12 +1,20 @@
 import React, {useState, useEffect} from 'react';
 import {Dimensions, TouchableOpacity, Animated, Text as NativeText} from 'react-native'
 import Svg, { Circle, Text } from 'react-native-svg';
-import {Container} from './styles'
+import {Container, ProgressIconContainer} from './styles'
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-export const CircularProgress = () => {
-    const [progress, setProgress] = useState(new Animated.Value(0)) //Animation of progress value
-    const [progressnumber, setProgressNumber] = useState(0) //Number progress value --- change the 10 for the weight activity number
+export const CircularProgress = ({activity, title}) => {
+
+    //Circle Proportions
+    const {width} = Dimensions.get("window") 
+    size = width - 275 
+    const radius = (size - 50) / 2
+    const circunference = radius * 2 * Math.PI
+
+    const [progressnumber, setProgressNumber] = useState(10) //Number progress value --- change the 10 for the weight activity number
+    const [progress, setProgress] = useState(new Animated.Value(progressnumber * circunference  / 100)) //Animation of progress value
+    
     const [background, setBackgroud] = useState(new Animated.Value(0)) //Background
 
     useEffect(() => { //Start animation of change colors of the circular progress
@@ -23,22 +31,19 @@ export const CircularProgress = () => {
             ])
         ).start()
     }, [])
-    //Circle Proportions
-    const {width} = Dimensions.get("window") 
-    size = width - 275 
-    const radius = (size - 50) / 2
-    const circunference = radius * 2 * Math.PI
+    
+    //Animated Components
     const AnimatedProgress = Animated.createAnimatedComponent(Circle)
     const AnimatedProgressIcon = Animated.createAnimatedComponent(Icon)
 
     const ProgressLimiter = (add) => {
-        console.log(add)
-        if(progressnumber !== 100){
+
+        if(progressnumber !== 100 ){
             Animated.timing(progress, {
-                toValue: (progressnumber + (add === true ? 10 : -10)) * circunference  / 100 ,
+                toValue: (progressnumber + (add === true ? 10 : (progressnumber > 0 ? -10 : null ))) * circunference  / 100 ,
                 duration: 1000
             }).start()
-            setProgressNumber(progressnumber+(add === true ? 10 : -10))//Add progress  
+            setProgressNumber(progressnumber+(add === true ? 10 : (progressnumber > 0 ? -10 : null ) ))//Add progress  
         }else null
     }
     var bakcgroundcolor = background.interpolate({ //Color loop interpolate 
@@ -48,8 +53,9 @@ export const CircularProgress = () => {
     return(
         <Container>
             <NativeText> {progressnumber} / 100 </NativeText>
+            <NativeText> {title} </NativeText>
             <TouchableOpacity onPress={() => ProgressLimiter(true)}>
-                <Svg height="100%" width="100%" viewBox="0 0 100 100">
+                <Svg height="100%" width="100%" viewBox="0 0 100 100" >
                     <AnimatedProgress
                         cx="50"
                         cy="50"
@@ -68,11 +74,13 @@ export const CircularProgress = () => {
                         strokeDasharray= {` ${circunference} ${circunference} `}
                         strokeDashoffset={ progress }
                     />
-                    <AnimatedProgressIcon
-                        name='rocket' //Add in the future costumizable icon
-                        size= {25}
-                        style={{position: 'relative',paddingTop: '25%', paddingRight: '35%', paddingBottom: '50%', textAlign: "center", color: bakcgroundcolor }}
-                    />
+                    <ProgressIconContainer>
+                        <AnimatedProgressIcon
+                            name={activity} //Add in the future costumizable icon
+                            size= {25}
+                            style={{ color: bakcgroundcolor }}
+                        />
+                    </ProgressIconContainer>
                 </Svg>            
             </TouchableOpacity>
             <TouchableOpacity onPress={() => ProgressLimiter(false)}>
