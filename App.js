@@ -4,6 +4,7 @@ import {View, Text, TouchableHighlight, TouchableOpacity, FlatList} from 'react-
 
 //Screens
 import {CircularProgress} from './src/components/CircularProgress'
+import {HeaderContain} from './src/components/Header'
 
 const App = () => {
 
@@ -32,14 +33,23 @@ const App = () => {
   ];
 
   return (
-    <View style={{flexDirection: "row", height: '100%', backgroundColor: 'rgb(255, 168, 162)'}}>
-      <FlatList
-        data={Data}
-        renderItem={({item}) => <CircularProgress activity={item.icon} title={item.title} />}
-        horizontal={true}
-      />
-    </View>
+    <>
+    
+      <HeaderContain>
+        <View style={{ height: '100%', backgroundColor: 'white'}}>
+          <FlatList
+            data={Data}
+            renderItem={({item}) => <CircularProgress activity={item.icon} title={item.title} />}
+            horizontal={true}
+          />
+        </View>
+      </HeaderContain>
+    </>
   );
 };
 
 export default App;
+
+/*
+
+*/

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import {Dimensions, TouchableOpacity, Animated, Text as NativeText} from 'react-native'
-import Svg, { Circle, Text } from 'react-native-svg';
-import {Container, ProgressIconContainer} from './styles'
+import {Dimensions, TouchableOpacity, Animated} from 'react-native'
+import Svg, { Circle } from 'react-native-svg';
+import {Container, ProgressIconContainer, ProgressText, Title, MinusContainer, Minus} from './styles'
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 export const CircularProgress = ({activity, title}) => {
@@ -52,8 +52,8 @@ export const CircularProgress = ({activity, title}) => {
     });
     return(
         <Container>
-            <NativeText> {progressnumber} / 100 </NativeText>
-            <NativeText> {title} </NativeText>
+            <ProgressText> {progressnumber} / 100 </ProgressText>
+            <Title> {title} </Title>
             <TouchableOpacity onPress={() => ProgressLimiter(true)}>
                 <Svg height="100%" width="100%" viewBox="0 0 100 100" >
                     <AnimatedProgress
@@ -83,8 +83,8 @@ export const CircularProgress = ({activity, title}) => {
                     </ProgressIconContainer>
                 </Svg>            
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => ProgressLimiter(false)}>
-                <NativeText style={{textAlign:"center", fontSize: 35}}>-</NativeText>
-            </TouchableOpacity>
+            <MinusContainer onPress={() => ProgressLimiter(false)}>
+                <Minus style={{textAlign:"center", fontSize: 35}}>-</Minus>
+            </MinusContainer>
         </Container>
     )}
