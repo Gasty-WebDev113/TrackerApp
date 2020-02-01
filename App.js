@@ -5,6 +5,7 @@ import {View, Text, TouchableHighlight, TouchableOpacity, FlatList} from 'react-
 //Screens
 import {CircularProgress} from './src/components/CircularProgress'
 import {HeaderContain} from './src/components/Header'
+import {Podometer} from './src/components/Podometer'
 
 const App = () => {
 
@@ -36,13 +37,8 @@ const App = () => {
     <>
     
       <HeaderContain>
-        <View style={{ height: '100%', backgroundColor: 'white'}}>
-          <FlatList
-            data={Data}
-            renderItem={({item}) => <CircularProgress activity={item.icon} title={item.title} />}
-            horizontal={true}
-          />
-        </View>
+        
+        <Podometer />
       </HeaderContain>
     </>
   );

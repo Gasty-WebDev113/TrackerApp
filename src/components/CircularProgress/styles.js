@@ -8,7 +8,7 @@ const AnimatedProgressIcon = Animated.createAnimatedComponent(Icon)
 export const Container = styled.View`
     height: 250px;
     width: 180px;
-    background: rgb(0, 236, 255);
+    background: white;
     padding-bottom: 110px;
     padding-top: 10px;
     margin-right: 10px;
@@ -51,6 +51,6 @@ export const MinusContainer = styled.TouchableOpacity`
 
 export const Minus = styled.Text`
     color: gray;
-    text-align: center;
     font-size: 35px;
+    line-height: 40px;
 `

@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {View, Text} from 'react-native'
 import {Header} from 'react-native-elements'
 import {HeaderMenu} from './Menu'
 import SideMenu from 'react-native-side-menu'
