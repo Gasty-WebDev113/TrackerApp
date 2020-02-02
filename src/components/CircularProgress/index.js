@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import {Dimensions, TouchableOpacity, Animated, View} from 'react-native';
+import {Dimensions, Animated} from 'react-native';
 import Svg, {Circle} from 'react-native-svg';
+import PropTypes from 'prop-types';
 import {
   Container,
   CircleContainer,
@@ -12,6 +13,14 @@ import {
 } from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+CircularProgress.propTypes = {
+  activity: PropTypes.string.isRequired,
+  innertext: PropTypes.string.isRequired,
+  cardmode: PropTypes.bool.isRequired,
+  weight: PropTypes.number.isRequired,
+  max: PropTypes.number.isRequired,
+};
+
 export const CircularProgress = ({
   activity,
   innertext,
@@ -19,12 +28,6 @@ export const CircularProgress = ({
   weight,
   max,
 }) => {
-  // Circle Proportions
-  const {width} = Dimensions.get('window');
-  const size = width - 275;
-  const radius = (size - 50) / 2;
-  const circunference = radius * 2 * Math.PI;
-
   const [progressnumber, setProgressNumber] = useState(weight); // Number progress value --- change the 10 for the weight activity number
   const [progress, setProgress] = useState(
     new Animated.Value((weight * circunference) / max),
@@ -74,6 +77,13 @@ export const CircularProgress = ({
     inputRange: [0, 300],
     outputRange: ['rgba(210,255,82,1)', 'rgba(124, 194, 58, 1)'],
   });
+
+  // Circle Proportions
+  const {width} = Dimensions.get('window');
+  const size = width - 275;
+  const radius = (size - 50) / 2;
+  const circunference = radius * 2 * Math.PI;
+
   return (
     <Container>
       {cardmode === true ? (
@@ -125,3 +135,5 @@ export const CircularProgress = ({
     </Container>
   );
 };
+
+
