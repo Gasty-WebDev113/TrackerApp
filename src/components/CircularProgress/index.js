@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import {Dimensions, TouchableOpacity, Animated} from 'react-native'
+import {Dimensions, TouchableOpacity, Animated, View} from 'react-native'
 import Svg, { Circle } from 'react-native-svg';
-import {Container, ProgressIconContainer, ProgressText, Title, MinusContainer, Minus} from './styles'
+import {Container, ProgressIconContainer, ProgressText, InnerText, MinusContainer, Minus} from './styles'
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-export const CircularProgress = ({activity, title}) => {
+export const CircularProgress = ({activity, innertext, cardmode, weight, max}) => {
 
     //Circle Proportions
     const {width} = Dimensions.get("window") 
@@ -12,8 +12,8 @@ export const CircularProgress = ({activity, title}) => {
     const radius = (size - 50) / 2
     const circunference = radius * 2 * Math.PI
 
-    const [progressnumber, setProgressNumber] = useState(10) //Number progress value --- change the 10 for the weight activity number
-    const [progress, setProgress] = useState(new Animated.Value(progressnumber * circunference  / 100)) //Animation of progress value
+    const [progressnumber, setProgressNumber] = useState(weight) //Number progress value --- change the 10 for the weight activity number
+    const [progress, setProgress] = useState(new Animated.Value(weight * circunference  / max)) //Animation of progress value
     
     const [background, setBackgroud] = useState(new Animated.Value(0)) //Background
 
@@ -38,12 +38,12 @@ export const CircularProgress = ({activity, title}) => {
 
     const ProgressLimiter = (add) => {
 
-        if(progressnumber !== 100 ){
+        if(progressnumber !== max ){ //Max is the max number of the circle
             Animated.timing(progress, {
-                toValue: (progressnumber + (add === true ? 10 : (progressnumber > 0 ? -10 : null ))) * circunference  / 100 ,
+                toValue: (progressnumber + (add === true ? weight : (progressnumber > 0 ? -weight : null ))) * circunference  / max ,
                 duration: 1000
             }).start()
-            setProgressNumber(progressnumber+(add === true ? 10 : (progressnumber > 0 ? -10 : null ) ))//Add progress  
+            setProgressNumber(progressnumber+(add === true ? weight : (progressnumber > 0 ? -weight : null ) ))//Add progress  
         }else null
     }
     var bakcgroundcolor = background.interpolate({ //Color loop interpolate 
@@ -52,9 +52,16 @@ export const CircularProgress = ({activity, title}) => {
     });
     return(
         <Container>
-            <ProgressText> {progressnumber} / 100 </ProgressText>
-            <Title> {title} </Title>
-            <TouchableOpacity onPress={() => ProgressLimiter(true)}>
+            {
+                cardmode === true ? 
+                <>
+                    <ProgressText> {progressnumber} / {max} </ProgressText>
+                </>
+                : null
+            }
+            <TouchableOpacity onPress={() => {
+                cardmode === true ?
+                ProgressLimiter(true) : null}} style={{width: '80%', alignSelf: "center"}}>
                 <Svg height="100%" width="100%" viewBox="0 0 100 100" >
                     <AnimatedProgress
                         cx="50"
@@ -80,11 +87,16 @@ export const CircularProgress = ({activity, title}) => {
                             size= {25}
                             style={{ color: bakcgroundcolor }}
                         />
+                        <InnerText> {innertext} </InnerText>
                     </ProgressIconContainer>
                 </Svg>            
             </TouchableOpacity>
-            <MinusContainer onPress={() => ProgressLimiter(false)}>
-                <Minus style={{textAlign:"center", fontSize: 35}}>-</Minus>
-            </MinusContainer>
+            {
+                cardmode === true 
+                ? <MinusContainer onPress={() => ProgressLimiter(false)}>
+                    <Minus style={{textAlign:"center", fontSize: 35}}>-</Minus>
+                </MinusContainer>
+                : null
+            }
         </Container>
     )}

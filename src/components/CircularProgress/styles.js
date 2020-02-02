@@ -6,13 +6,11 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 const AnimatedProgressIcon = Animated.createAnimatedComponent(Icon)
 
 export const Container = styled.View`
-    height: 250px;
-    width: 180px;
-    background: white;
-    padding-bottom: 110px;
+    height: 100%;
+    width: 100%;
+    background: black;
+    padding-bottom: 100px;
     padding-top: 10px;
-    margin-right: 10px;
-    margin-left: 10px;
     border-radius: 25px;
     margin-top: 20px;
 `
@@ -27,15 +25,18 @@ export const ProgressIconContainer = styled.View`
 `;
 
 export const ProgressText = styled.Text`
+    color: white;
     font-weight: bold;
     text-align: center;
 
 `
-export const Title = styled.Text`
+export const InnerText = styled.Text`
+    color: white;
     font-weight: bold;
     text-align: center;
-    font-size: 15px;
-    margin-bottom: 10px;
+    font-size: 10px;
+    margin-top: 10px;
+
 `
 
 export const MinusContainer = styled.TouchableOpacity`
