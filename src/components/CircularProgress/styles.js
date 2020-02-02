@@ -1,57 +1,55 @@
-import styled from 'styled-components/native'
-import React from 'react';
-import {Animated} from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome';
-
-const AnimatedProgressIcon = Animated.createAnimatedComponent(Icon)
+import styled from 'styled-components/native';
 
 export const Container = styled.View`
-    height: 100%;
-    width: 100%;
-    background: black;
-    padding-bottom: 100px;
-    padding-top: 10px;
-    border-radius: 25px;
-    margin-top: 20px;
-`
+  height: 100%;
+  width: 100%;
+  background: black;
+  padding-bottom: 100px;
+  padding-top: 10px;
+  border-radius: 25px;
+  margin-top: 20px;
+`;
+
+export const CircleContainer = styled.TouchableOpacity`
+  width: 80%;
+  align-self: center;
+`;
 
 export const ProgressIconContainer = styled.View`
-    height: 100px;
-    width: 100px;
-    position: absolute;
-    transform: translateX(250px);
-    justify-content: center;
-    align-items: center
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  transform: translateX(250px);
+  justify-content: center;
+  align-items: center;
 `;
 
 export const ProgressText = styled.Text`
-    color: white;
-    font-weight: bold;
-    text-align: center;
-
-`
+  color: white;
+  font-weight: bold;
+  text-align: center;
+`;
 export const InnerText = styled.Text`
-    color: white;
-    font-weight: bold;
-    text-align: center;
-    font-size: 10px;
-    margin-top: 10px;
-
-`
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  font-size: 10px;
+  margin-top: 10px;
+`;
 
 export const MinusContainer = styled.TouchableOpacity`
-    border-radius: 100;
-    border-width: 5px;
-    border-color: gray;
-    height: 40px;
-    width: 40px;
-    justify-content: center;
-    align-self: center;
-    margin-top: 5px;
-`
+  border-radius: 100;
+  border-width: 5px;
+  border-color: gray;
+  height: 40px;
+  width: 40px;
+  justify-content: center;
+  align-self: center;
+  margin-top: 5px;
+`;
 
 export const Minus = styled.Text`
-    color: gray;
-    font-size: 35px;
-    line-height: 40px;
-`
+  color: gray;
+  font-size: 35px;
+  line-height: 40px;
+`;

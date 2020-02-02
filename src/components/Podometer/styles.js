@@ -1,7 +1,7 @@
-import styled from 'styled-components/native'
+import styled from 'styled-components/native';
 
 export const Container = styled.View`
-    height: 500;
-    width: 80%;
-    align-self: center
-`
+  height: 500;
+  width: 80%;
+  align-self: center;
+`;
