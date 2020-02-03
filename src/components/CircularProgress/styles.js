@@ -15,26 +15,10 @@ export const CircleContainer = styled.TouchableOpacity`
   align-self: center;
 `;
 
-export const ProgressIconContainer = styled.View`
-  height: 100px;
-  width: 100px;
-  position: absolute;
-  transform: translateX(250px);
-  justify-content: center;
-  align-items: center;
-`;
-
 export const ProgressText = styled.Text`
   color: white;
   font-weight: bold;
   text-align: center;
-`;
-export const InnerText = styled.Text`
-  color: white;
-  font-weight: bold;
-  text-align: center;
-  font-size: 10px;
-  margin-top: 10px;
 `;
 
 export const MinusContainer = styled.TouchableOpacity`
@@ -52,4 +36,5 @@ export const Minus = styled.Text`
   color: gray;
   font-size: 35px;
   line-height: 40px;
+  text-align: center;
 `;

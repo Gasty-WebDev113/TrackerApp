@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, ScrollView} from 'react-native';
 
 // Screens
 import {ActivityList} from './src/components/ActivityList';
@@ -10,10 +10,10 @@ const App = () => {
   return (
     <>
       <HeaderContain>
-        <View style={{backgroundColor: 'gray'}}>
+        <ScrollView style={{backgroundColor: 'gray'}}>
           <ActivityList />
           <Podometer />
-        </View>
+        </ScrollView>
       </HeaderContain>
     </>
   );

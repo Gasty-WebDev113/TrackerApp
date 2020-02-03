@@ -38,7 +38,7 @@ export const ActivityList = () => {
             innertext={item.title}
             cardmode={true}
             weight={1}
-            max={60}
+            max={10}
           />
         </Container>
       )}
