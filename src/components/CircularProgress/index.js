@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Dimensions, Animated} from 'react-native';
+import {Animated} from 'react-native';
 import PropTypes from 'prop-types';
 import {
   Container,
@@ -9,6 +9,7 @@ import {
   Minus,
 } from './styles';
 import {useCircleAnimation} from '../../hooks/useCircularAnimation';
+import {circunference} from '../../constants/circunference';
 
 export const CircularProgress = ({
   activity,
@@ -17,14 +18,11 @@ export const CircularProgress = ({
   weight,
   max,
 }) => {
-  // Circle Proportions
-  const {width} = Dimensions.get('window');
-  const size = width - 275;
-  const radius = (size - 50) / 2;
-  const circunference = radius * 2 * Math.PI;
 
   const [progressnumber, setProgressNumber] = useState(weight); // Number progress value --- change the 10 for the weight activity number
-  const progress = new Animated.Value((weight * circunference) / max); // Animation of progress value
+  const [progress, setProgress] = useState( // Yes, I need the this in state
+    new Animated.Value((weight * circunference) / max),
+  ); // Animation of progress value
   const circleprogress = useCircleAnimation(
     progress,
     'rgba(210,255,82,1)',

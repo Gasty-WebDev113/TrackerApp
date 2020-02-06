@@ -1,6 +1,6 @@
 
 import React, {useEffect} from 'react';
-import {Dimensions, Animated} from 'react-native';
+import {Animated} from 'react-native';
 import Svg, {Circle} from 'react-native-svg';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import PropTypes from 'prop-types';
@@ -8,6 +8,8 @@ import {
   ProgressIconContainer,
   InnerText,
 } from './styles/useCircularAnimationStyles';
+
+import {radius, circunference} from '../constants/circunference';
 
 /**
  * @param {Animated.Value} progress progress number to the function
@@ -26,12 +28,6 @@ export function useCircleAnimation(
   iconsize,
 ) {
   const background = new Animated.Value(0); // Background
-
-  // Circle Proportions
-  const {width} = Dimensions.get('window');
-  const size = width - 275;
-  const radius = (size - 50) / 2;
-  const circunference = radius * 2 * Math.PI;
 
   // Animated Components
   const AnimatedProgress = Animated.createAnimatedComponent(Circle);
