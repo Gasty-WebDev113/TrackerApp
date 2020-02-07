@@ -3,10 +3,10 @@ import {Header} from 'react-native-elements';
 import {HeaderMenu} from './Menu';
 import SideMenu from 'react-native-side-menu';
 import Icon from 'react-native-vector-icons/FontAwesome';
+
 export const HeaderContain = ({children}) => {
   const [open, setOpen] = useState(false);
   const menu = <HeaderMenu navigator={navigator} />;
-
   return (
     <SideMenu menu={menu} isOpen={open}>
       <Header

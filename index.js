@@ -3,18 +3,16 @@
  */
 
 import {Navigation} from 'react-native-navigation';
-import App from './App';
-import {name as appName} from './app.json';
+import {registerScreens} from './src/navigation/registerScreens';
 
 // Yesss, add Wix ReactNativeNavigation
-
-Navigation.registerComponent('navigation.playground.WelcomeScreen', () => App);
+registerScreens(); // Register the Screens
 
 Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setRoot({
     root: {
       component: {
-        name: 'navigation.playground.WelcomeScreen',
+        name: 'Home',
       },
     },
   });

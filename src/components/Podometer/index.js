@@ -1,11 +1,13 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import AsyncStorage from '@react-native-community/async-storage';
 import {Container} from './styles';
 import {useCircleAnimation} from '../../hooks/useCircularAnimation';
 import {useStepCounter} from '../../hooks/useStepCounter';
 import {circunference} from '../../constants/circunference'
 
 export const Podometer = ({initialsteps}) => {
-  const steps = useStepCounter(initialsteps);
+
+  const steps = useStepCounter(0); 
 
   const podometerprogress = useCircleAnimation(
     (steps * circunference) / 10000,
@@ -16,6 +18,6 @@ export const Podometer = ({initialsteps}) => {
     30,
   );
   // After 12pm store the data, and substract with steps
-
-  return <Container>{podometerprogress}</Container>;
+  return <Container>{podometerprogress}</Container>
+  // Add loader
 };
