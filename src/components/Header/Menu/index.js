@@ -26,12 +26,7 @@ export const HeaderMenu = () => {
   return (
     <Container>
       {menulist.map((item, i) => (
-        <ListItem
-          key={i}
-          title={item.title}
-          leftIcon={{name: item.icon}}
-          containerStyle={{backgroundColor: 'none'}}
-        />
+        <ListItem key={i} title={item.title} leftIcon={{name: item.icon}} />
       ))}
     </Container>
   );

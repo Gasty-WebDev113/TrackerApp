@@ -1,8 +1,17 @@
 /* eslint-disable require-jsdoc */
-export function setpReducer(state = {}, action) {
+
+import {REHYDRATE} from 'redux-persist';
+
+const initialState = {
+  steps: 0,
+  auth: false,
+};
+
+export function setpReducer(state = initialState, action) {
   switch (action.type) {
-    case 'INITIAL_STEPS':
-      return action.payload;
+    case 'SET_INITIAL_STEPS':
+      // eslint-disable-next-line no-return-assign
+      return {...state, steps: action.steps}
 
     default:
       return state;

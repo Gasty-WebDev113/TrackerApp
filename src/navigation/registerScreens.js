@@ -10,7 +10,6 @@ import Home from '../screens/Home';
 // eslint-disable-next-line require-jsdoc
 function WrappedComponent(Component) {
   // Wrap any component
-  console.log(Provider)
   return function inject(props) {
     const EnchancedComponent = () => (
       // Wrap the component with the persist gate

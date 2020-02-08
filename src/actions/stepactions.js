@@ -1,6 +1,8 @@
-export const initialsteps = () => {
+export const setsteps = steps => {
+  console.log(steps);
   return {
-    type: 'INITIAL_STEPS',
-    payload: 0,
+    type: 'SET_INITIAL_STEPS',
+    steps,
   };
 };
+

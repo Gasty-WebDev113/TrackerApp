@@ -1,6 +1,7 @@
 import {DeviceEventEmitter, NativeModules} from 'react-native';
 import {useState, useEffect, useRef} from 'react';
-import AsyncStorage from '@react-native-community/async-storage';
+import {setsteps} from '../actions/stepactions';
+import {useSelector, useDispatch} from 'react-redux';
 
 const sensor = NativeModules.SensorManager;
 
@@ -11,6 +12,7 @@ export function useStepCounter(initialsteps) {
   const [stepnumber, setSteps] = useState(initialsteps);
   const [number, setNumber] = useState(0);
   const prevStepCount = usePrevious(stepnumber);
+  const dispatch = useDispatch();
 
   /**
    * @param {number} value the prevState to be used to compare
@@ -42,21 +44,15 @@ export function useStepCounter(initialsteps) {
 
   // Work In Progress
   useEffect(() => {
-    /** Send the state to async storage */
-    async function SaveStep() {
+    /** Send the state to storage */
+    function SaveStep() {
       if (stepnumber !== prevStepCount && stepnumber !== 0) {
-        // Avoid overload of setItems
-        try {
-          await AsyncStorage.setItem('steps', JSON.stringify(stepnumber));
-          console.log('Saving');
-        } catch (e) {
-          // saving error
-        }
+        // dispatch to the persist store
+        dispatch(setsteps(stepnumber));
       }
     }
     SaveStep();
-    console.log(stepnumber !== prevStepCount);
-  }, [prevStepCount, stepnumber]);
+  }, [dispatch, initialsteps, prevStepCount, stepnumber]);
 
   return stepnumber;
 }
