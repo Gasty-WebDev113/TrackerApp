@@ -4,6 +4,8 @@ import {PersistGate} from 'redux-persist/integration/react';
 import {store, persistor} from '../../configStorage';
 import {Navigation} from 'react-native-navigation';
 
+// Header
+import {HeaderContain} from '../components/Header';
 // Screens
 import Home from '../screens/Home';
 
@@ -15,7 +17,9 @@ function WrappedComponent(Component) {
       // Wrap the component with the persist gate
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <Component {...props} />
+          <HeaderContain>
+            <Component {...props} />
+          </HeaderContain>
         </PersistGate>
       </Provider>
     );

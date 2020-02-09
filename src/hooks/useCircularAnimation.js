@@ -1,4 +1,3 @@
-
 import React, {useEffect} from 'react';
 import {Animated} from 'react-native';
 import Svg, {Circle} from 'react-native-svg';
@@ -7,6 +6,8 @@ import PropTypes from 'prop-types';
 import {
   ProgressIconContainer,
   InnerText,
+  InnerTextContainer,
+  SecondInnerText,
 } from './styles/useCircularAnimationStyles';
 
 import {radius, circunference} from '../constants/circunference';
@@ -16,6 +17,7 @@ import {radius, circunference} from '../constants/circunference';
  * @param {string} firstColor first color of the gradient animation
  * @param {string} secondColor second color of the gradient animation
  * @param {string} innertext text inside in the circular
+ * @param {string} secondinnertext text inside in the circular
  * @param {string} activity icon name with fontawsome
  * @param {int} iconsize icon size
  */
@@ -26,6 +28,7 @@ export function useCircleAnimation(
   innertext,
   activity,
   iconsize,
+  bottominnertext,
 ) {
   const background = new Animated.Value(0); // Background
 
@@ -60,7 +63,7 @@ export function useCircleAnimation(
       <AnimatedProgress
         cx="50"
         cy="50"
-        r={radius}
+        r={radius - 1}
         stroke={bakcgroundcolor}
         fill="none"
         strokeWidth="10"
@@ -81,7 +84,12 @@ export function useCircleAnimation(
           size={iconsize}
           style={{color: bakcgroundcolor}}
         />
-        <InnerText> {innertext} </InnerText>
+        <InnerTextContainer>
+          <InnerText> {innertext} </InnerText>
+          {bottominnertext ? (
+            <SecondInnerText> GOAL: {bottominnertext} </SecondInnerText>
+          ) : null}
+        </InnerTextContainer>
       </ProgressIconContainer>
     </Svg>
   );
@@ -94,4 +102,5 @@ useCircleAnimation.propTypes = {
   innertext: PropTypes.string,
   activity: PropTypes.string,
   iconsize: PropTypes.number,
-}
+  bottominnertext: PropTypes.string,
+};

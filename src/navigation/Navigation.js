@@ -7,9 +7,9 @@ export function homeScreen() {
       children: [
         {
           component: {
-            name: 'HomeScreen',
+            name: 'Home',
             passProps: {
-              text: 'HomeScreen',
+              text: 'Home',
             },
           },
         },

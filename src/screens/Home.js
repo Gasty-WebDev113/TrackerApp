@@ -1,20 +1,23 @@
-import React,{Component} from 'react';
-import {ScrollView} from 'react-native';
+import React, {Component} from 'react';
+import {ScrollView, View} from 'react-native';
 import {ActivityList} from '../components/ActivityList';
-import {HeaderContain} from '../components/Header';
 import Podometer from '../components/Podometer';
-
-// eslint-disable-next-line require-jsdoc
+import WaterDrinking from '../components/WaterDrinking'
+import LinearGradient from 'react-native-linear-gradient';
+/** Home Screen */
 export default class Home extends Component {
   // eslint-disable-next-line require-jsdoc
   render() {
     return (
-      <HeaderContain>
-        <ScrollView style={{backgroundColor: 'white'}}>
+      <ScrollView>
+        <LinearGradient 
+        locations={[0, 0.55, 0.65]}
+        colors={['#000000', '#07002a', '#1d3e5e']}>
           <ActivityList />
           <Podometer />
-        </ScrollView>
-      </HeaderContain>
+          <WaterDrinking />
+        </LinearGradient>
+      </ScrollView>
     );
   }
 }

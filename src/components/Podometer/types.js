@@ -1,5 +1,0 @@
-
-
-export static CircularProgressProps {
-    
-}

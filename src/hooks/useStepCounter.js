@@ -1,12 +1,12 @@
 import {DeviceEventEmitter, NativeModules} from 'react-native';
 import {useState, useEffect, useRef} from 'react';
 import {setsteps} from '../actions/stepactions';
-import {useSelector, useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
 
 const sensor = NativeModules.SensorManager;
 
 /**
- * @param {number} initialsteps the step stored in the async storage
+ * @param {number} initialsteps the step stored in the redux persist storage
  */
 export function useStepCounter(initialsteps) {
   const [stepnumber, setSteps] = useState(initialsteps);

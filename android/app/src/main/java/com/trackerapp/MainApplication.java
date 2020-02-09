@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+import com.BV.LinearGradient.LinearGradientPackage;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 import io.realm.react.RealmReactPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -26,6 +27,9 @@ import com.reactnativenavigation.react.ReactGateway;
 
 //Sensors
 import com.sensormanager.SensorManagerPackage;
+
+//Linear Gradient
+import com.BV.LinearGradient.LinearGradientPackage;
 
 public class MainApplication extends NavigationApplication {
 
@@ -52,7 +56,8 @@ public class MainApplication extends NavigationApplication {
             // eg. new VectorIconsPackage()
             new SvgPackage(),
             new SensorManagerPackage(),
-            new AsyncStoragePackage()
+            new AsyncStoragePackage(),
+            new LinearGradientPackage()
         );
     }
 

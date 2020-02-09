@@ -9,11 +9,18 @@ export const ProgressIconContainer = styled.View`
   align-items: center;
 `;
 
+export const InnerTextContainer = styled.View`
+  margin-top: 8px;
+`
 
 export const InnerText = styled.Text`
   color: white;
   font-weight: bold;
   text-align: center;
   font-size: 10px;
-  margin-top: 10px;
 `;
+
+export const SecondInnerText = styled(InnerText)`
+  font-size: 4px;
+  color: gray;
+`
