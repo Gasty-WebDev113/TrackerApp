@@ -42,7 +42,7 @@ const Podometer = props => {
         </CaloriesContainer>
         <KilometersContainer>
           <Icon name="star" size={45} color="white" />
-          <KilometersTitle>Kilometros</KilometersTitle>
+          <KilometersTitle>Km</KilometersTitle>
           <Kilometers>{kilometers}</Kilometers>
         </KilometersContainer>
       </InformationContainer>

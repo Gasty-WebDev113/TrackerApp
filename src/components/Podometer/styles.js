@@ -13,6 +13,8 @@ export const InformationContainer = styled.View`
   flex-wrap: wrap;
   flex-basis: 1;
   align-self: center;
+  margin-top: 25px;
+  margin-bottom: 25px;
 `;
 
 export const CaloriesContainer = styled.View`
