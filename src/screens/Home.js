@@ -1,19 +1,19 @@
+/* eslint-disable require-jsdoc */
 import React, {Component} from 'react';
-import {ScrollView, View, Text} from 'react-native';
-import {BarChart} from 'react-native-chart-kit';
-import Podometer from '../components/Podometer';
-import BarChartSteps from '../components/BarChartSteps'
+import {ScrollView} from 'react-native';
+import Pedometer from '../components/Pedometer';
+import BarChartSteps from '../components/BarChartSteps';
 import LinearGradient from 'react-native-linear-gradient';
+import LottieView from 'lottie-react-native';
 /** Home Screen */
 export default class Home extends Component {
-  // eslint-disable-next-line require-jsdoc
   render() {
     return (
-      <ScrollView>
+      <ScrollView bounces={false}>
         <LinearGradient
           locations={[0, 0.55, 0.65]}
           colors={['#000000', '#07002a']}>
-          <Podometer />
+          <Pedometer />
           <BarChartSteps />
         </LinearGradient>
       </ScrollView>

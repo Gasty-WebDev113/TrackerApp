@@ -1,40 +1,39 @@
 import styled from 'styled-components/native';
+import LottieView from 'lottie-react-native';
 
 export const Container = styled.View`
   height: 100%;
   width: 100%;
-  background: black;
-  padding-bottom: 100px;
   padding-top: 10px;
-  border-radius: 25px;
-  margin-top: 20px;
+  align-items: center;
+  flex-direction: column;
 `;
 
-export const CircleContainer = styled.TouchableOpacity`
-  width: 80%;
-  align-self: center;
+export const CircleContainer = styled.View`
+  width: 150px;
+  height: 90px;
+  align-self: flex-start;
 `;
 
-export const ProgressText = styled.Text`
+export const HabitTitle = styled.Text`
   color: white;
   font-weight: bold;
-  text-align: center;
-`;
-
-export const MinusContainer = styled.TouchableOpacity`
-  border-radius: 100;
-  border-width: 5px;
-  border-color: gray;
-  height: 40px;
-  width: 40px;
-  justify-content: center;
+  position: absolute;
   align-self: center;
-  margin-top: 5px;
+  top: 15;
+  padding-left: 75px;
 `;
 
-export const Minus = styled.Text`
-  color: gray;
-  font-size: 35px;
-  line-height: 40px;
-  text-align: center;
+export const PlusHabit = styled.TouchableOpacity`
+  position: absolute;
+  height: 110px;
+  width: 100px;
+  justify-content: center;
+  align-self: flex-end;
+  border-radius: 25px;
+`;
+
+export const CheckIcon = styled(LottieView)`
+  height: 100%;
+  width: 100%;
 `;

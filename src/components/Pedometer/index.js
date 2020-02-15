@@ -15,17 +15,17 @@ import {useStepCounter} from '../../hooks/useStepCounter';
 import {circunference} from '../../constants/circunference';
 import {connect} from 'react-redux';
 
-const Podometer = props => {
-  const steps = useStepCounter(props.steps.steps);
+const Pedometer = props => {
+  const stepnumber = useStepCounter(props.steps.steps);
   // Calories burneds by walk
   const calories = Math.round(props.steps.steps * 0.05);
   const kilometers = (props.steps.steps * 0.00076).toFixed(2);
 
   const podometerprogress = useCircleAnimation(
-    (steps * circunference) / 10000,
+    (stepnumber * circunference) / 10000,
     'rgba(0, 230, 64, 1)',
     'rgba(0, 255, 51, 1)',
-    `${steps}`,
+    `${stepnumber}`,
     'trophy',
     30,
     10000,
@@ -56,4 +56,4 @@ function mapStateToProps(state) {
   return {steps: state.steps};
 }
 
-export default connect(mapStateToProps)(Podometer);
+export default connect(mapStateToProps)(Pedometer);

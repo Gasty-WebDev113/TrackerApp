@@ -8,6 +8,7 @@ import {Navigation} from 'react-native-navigation';
 import {HeaderContain} from '../components/Header';
 // Screens
 import Home from '../screens/Home';
+import HabitScreen from '../screens/HabitScreen';
 
 // eslint-disable-next-line require-jsdoc
 function WrappedComponent(Component) {
@@ -30,5 +31,6 @@ function WrappedComponent(Component) {
 /** Register the screens of react-native-navigation */
 export function registerScreens() {
   Navigation.registerComponent('Home', () => WrappedComponent(Home));
+  Navigation.registerComponent('Habits', () => WrappedComponent(HabitScreen));
   console.log('Screens Registered');
 }

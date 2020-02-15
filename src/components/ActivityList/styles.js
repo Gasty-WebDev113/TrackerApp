@@ -1,10 +1,23 @@
 import styled from 'styled-components/native';
 
+export const ListContainer = styled.View`
+  background: #10151f;
+`;
+
 export const Container = styled.View`
-  width: 230px;
-  height: 290px;
-  margin-top: 10px;
-  margin-bottom: 30px;
-  margin-right: 10px;
-  margin-left: 10px;
+  width: 100%;
+  height: 110px;
+`;
+
+export const Title = styled.Text`
+  font-weight: bold;
+  color: white;
+  margin-left: 20px;
+  margin-bottom: 15px;
+  font-size: 20px;
+`;
+
+export const Number = styled(Title)`
+  color: gray;
+  font-weight: normal;
 `;

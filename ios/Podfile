@@ -46,6 +46,8 @@ target 'TrackerApp' do
 
   pod 'react-native-viewpager', :path => '../node_modules/@react-native-community/viewpager'
 
+  pod 'lottie-react-native', :path => '../node_modules/lottie-react-native'
+
   target 'TrackerAppTests' do
     inherit! :search_paths
     # Pods for testing

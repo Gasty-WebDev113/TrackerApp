@@ -1,16 +1,18 @@
 import React from 'react';
+import {TouchableHighlight} from 'react-native'
+import {Navigation} from 'react-native-navigation';
 import {ListItem} from 'react-native-elements';
 import {Container} from './styles';
 
-export const HeaderMenu = () => {
+export const HeaderMenu = props => {
   const menulist = [
     // It uses Material UI
     {
-      title: 'Profile',
+      title: 'Home',
       icon: 'av-timer',
     },
     {
-      title: 'Activity',
+      title: 'Habits',
       icon: 'directions-run',
     },
     {
@@ -18,7 +20,7 @@ export const HeaderMenu = () => {
       icon: 'star',
     },
     {
-      title: 'Pomodoro',
+      title: 'Drink Water',
       icon: 'access-time',
     },
   ];
@@ -26,7 +28,16 @@ export const HeaderMenu = () => {
   return (
     <Container>
       {menulist.map((item, i) => (
-        <ListItem key={i} title={item.title} leftIcon={{name: item.icon}} />
+        <TouchableHighlight
+          onPress={() => {
+            Navigation.push('Component1', {
+              component: {
+                name: `${item.title}`,
+              },
+            });
+          }}>
+          <ListItem key={i} title={item.title} leftIcon={{name: item.icon}} />
+        </TouchableHighlight>
       ))}
     </Container>
   );

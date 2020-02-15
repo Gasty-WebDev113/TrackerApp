@@ -6,13 +6,12 @@ import {
   chartConfigLightBlue,
   chartConfigLightRed,
 } from '../../constants/chart';
-import {width} from '../../constants/circunference';
 import {Container, Pager, CharContainer, CharText} from './styles';
 
 const BarChartSteps = () => {
   return (
     <Container>
-      <Pager>
+      <Pager scrollEnabled={true} >
         <CharContainer>
           <BarChart
             data={weekdays}
@@ -21,6 +20,7 @@ const BarChartSteps = () => {
             chartConfig={chartConfigYellow}
             withInnerLines={false}
             showBarTops={false}
+            fromZero={true}
           />
           <CharText>Steeps</CharText>
         </CharContainer>

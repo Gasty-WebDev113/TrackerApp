@@ -1,7 +1,7 @@
 import React from 'react';
 import {FlatList} from 'react-native';
 import {CircularProgress} from '../CircularProgress';
-import {Container} from './styles';
+import {ListContainer, Container, Title, Number} from './styles';
 
 export const ActivityList = () => {
   // Data Example
@@ -29,20 +29,23 @@ export const ActivityList = () => {
   ];
 
   return (
-    <FlatList
-      data={Data}
-      renderItem={({item}) => (
-        <Container>
-          <CircularProgress
-            activity={item.icon}
-            innertext={item.title}
-            cardmode={true}
-            weight={1}
-            max={10}
-          />
-        </Container>
-      )}
-      horizontal={true}
-    />
+    <ListContainer>
+      <Title>Your Habits   <Number>{Object.keys(Data).length}</Number></Title>
+      <FlatList
+        data={Data}
+        renderItem={({item}) => (
+          <Container>
+            <CircularProgress
+              activity={item.icon}
+              innertext={item.title}
+              cardmode={true}
+              weight={1}
+              max={10}
+            />
+          </Container>
+        )}
+        horizontal={false}
+      />
+    </ListContainer>
   );
 };

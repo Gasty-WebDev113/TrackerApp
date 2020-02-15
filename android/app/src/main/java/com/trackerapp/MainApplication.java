@@ -4,7 +4,9 @@ import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+import com.airbnb.android.react.lottie.LottiePackage;
 import com.reactnativecommunity.viewpager.RNCViewPagerPackage;
+
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -30,6 +32,9 @@ import com.sensormanager.SensorManagerPackage;
 
 //Linear Gradient
 import com.BV.LinearGradient.LinearGradientPackage;
+
+//Lottie
+import com.airbnb.android.react.lottie.LottiePackage;
 
 
 public class MainApplication extends NavigationApplication {
@@ -57,6 +62,7 @@ public class MainApplication extends NavigationApplication {
             // eg. new VectorIconsPackage()
             new SvgPackage(),
             new SensorManagerPackage(),
+            new LottiePackage(),
             new AsyncStoragePackage(),
             new RNCViewPagerPackage(),
             new LinearGradientPackage()

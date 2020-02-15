@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
-import {Animated} from 'react-native';
+import {Animated, Easing} from 'react-native';
 import PropTypes from 'prop-types';
+import LottieView from 'lottie-react-native';
 import {
   Container,
   CircleContainer,
-  ProgressText,
-  MinusContainer,
-  Minus,
+  HabitTitle,
+  PlusHabit,
+  CheckIcon,
 } from './styles';
 import {useCircleAnimation} from '../../hooks/useCircularAnimation';
 import {circunference} from '../../constants/circunference';
@@ -18,11 +19,12 @@ export const CircularProgress = ({
   weight,
   max,
 }) => {
-
   const [progressnumber, setProgressNumber] = useState(weight); // Number progress value --- change the 10 for the weight activity number
-  const [progress, setProgress] = useState( // Yes, I need the this in state
+  const [progress, setProgress] = useState(
+    // Yes, I need the this in state
     new Animated.Value((weight * circunference) / max),
   ); // Animation of progress value
+  const [checkProgress, setCheckProgress] = useState(new Animated.Value(0.01));
   const circleprogress = useCircleAnimation(
     progress,
     'rgba(210,255,82,1)',
@@ -35,41 +37,41 @@ export const CircularProgress = ({
   const ProgressLimiter = add => {
     if (progressnumber !== max) {
       // Max is the max number of the circle
-      Animated.timing(progress, {
-        toValue:
-          ((progressnumber +
-            (add === true ? weight : progressnumber > 0 ? -weight : null)) *
-            circunference) /
-          max,
-        duration: 1000,
-      }).start();
-      setProgressNumber(
-        progressnumber +
-          (add === true ? weight : progressnumber > 0 ? -weight : null),
-      ); // Add progress
+      Animated.parallel([
+        Animated.timing(checkProgress, {
+          toValue: 1,
+          duration: 1000,
+          easing: Easing.linear,
+        }),
+        Animated.timing(progress, {
+          toValue: ((progressnumber + weight) * circunference) / max,
+          duration: 1000,
+        }),
+      ]).start();
+      setProgressNumber(progressnumber + weight); // Add progress
     } else null;
   };
 
   return (
     <Container>
-      {cardmode === true ? (
-        <>
-          <ProgressText>
-            {' '}
-            {progressnumber} / {max}{' '}
-          </ProgressText>
-        </>
-      ) : null}
       <CircleContainer
         onPress={() => {
           cardmode === true ? ProgressLimiter(true) : null;
         }}>
         {circleprogress}
       </CircleContainer>
+      <HabitTitle>{innertext}</HabitTitle>
       {cardmode === true ? (
-        <MinusContainer onPress={() => ProgressLimiter(false)}>
-          <Minus>-</Minus>
-        </MinusContainer>
+        <PlusHabit
+          onPress={() => {
+            ProgressLimiter(true);
+          }}>
+          <CheckIcon
+            progress={checkProgress}
+            source={require('../../animations/check.json')}
+            colorFilter="#3D17F6"
+          />
+        </PlusHabit>
       ) : null}
     </Container>
   );

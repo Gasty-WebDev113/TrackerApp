@@ -11,9 +11,24 @@ registerScreens(); // Register the Screens
 Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setRoot({
     root: {
-      component: {
-        name: 'Home',
+      stack: {
+        id: 'TrackerApp',
+        children: [
+          {
+            component: {
+              name: 'Home',
+            },
+          },
+        ],
       },
     },
   });
+});
+
+Navigation.setDefaultOptions({
+  topBar: {
+    visible: false,
+    _height: 0,
+    drawBehind: true,
+  },
 });
