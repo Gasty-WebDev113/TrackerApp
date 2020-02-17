@@ -1,8 +1,8 @@
 /* eslint-disable require-jsdoc */
 import React, {Component} from 'react';
 import {ScrollView} from 'react-native';
-import Pedometer from '../components/Pedometer';
-import BarChartSteps from '../components/BarChartSteps';
+import Pedometer from './components/Pedometer';
+import BarChartSteps from './components/BarChartSteps';
 import LinearGradient from 'react-native-linear-gradient';
 import LottieView from 'lottie-react-native';
 /** Home Screen */

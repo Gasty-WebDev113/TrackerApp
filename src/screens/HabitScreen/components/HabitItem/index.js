@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Animated, Easing} from 'react-native';
+import {Animated} from 'react-native';
 import PropTypes from 'prop-types';
 import LottieView from 'lottie-react-native';
 import {
@@ -9,22 +9,16 @@ import {
   PlusHabit,
   CheckIcon,
 } from './styles';
-import {useCircleAnimation} from '../../hooks/useCircularAnimation';
-import {circunference} from '../../constants/circunference';
+import {useCircleAnimation} from '../../../../hooks/useCircularAnimation';
+import {circunference} from '../../../../constants/circunference';
 
-export const CircularProgress = ({
-  activity,
-  innertext,
-  cardmode,
-  weight,
-  max,
-}) => {
+export const HabitItem = ({activity, innertext, cardmode, weight, max}) => {
   const [progressnumber, setProgressNumber] = useState(weight); // Number progress value --- change the 10 for the weight activity number
   const [progress, setProgress] = useState(
     // Yes, I need the this in state
     new Animated.Value((weight * circunference) / max),
   ); // Animation of progress value
-  const [checkProgress, setCheckProgress] = useState(new Animated.Value(0.01));
+  const [checkProgress, setCheckProgress] = useState(new Animated.Value(0));
   const circleprogress = useCircleAnimation(
     progress,
     'rgba(210,255,82,1)',
@@ -41,7 +35,6 @@ export const CircularProgress = ({
         Animated.timing(checkProgress, {
           toValue: 1,
           duration: 1000,
-          easing: Easing.linear,
         }),
         Animated.timing(progress, {
           toValue: ((progressnumber + weight) * circunference) / max,
@@ -68,7 +61,7 @@ export const CircularProgress = ({
           }}>
           <CheckIcon
             progress={checkProgress}
-            source={require('../../animations/check.json')}
+            source={require('../../../../animations/check.json')}
             colorFilter="#3D17F6"
           />
         </PlusHabit>
@@ -77,7 +70,7 @@ export const CircularProgress = ({
   );
 };
 
-CircularProgress.propTypes = {
+HabitItem.propTypes = {
   activity: PropTypes.string.isRequired,
   innertext: PropTypes.string,
   cardmode: PropTypes.bool.isRequired,

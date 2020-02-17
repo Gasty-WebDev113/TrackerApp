@@ -10,9 +10,9 @@ import {
   KilometersTitle,
   Kilometers,
 } from './styles';
-import {useCircleAnimation} from '../../hooks/useCircularAnimation';
-import {useStepCounter} from '../../hooks/useStepCounter';
-import {circunference} from '../../constants/circunference';
+import {useCircleAnimation} from '../../../../hooks/useCircularAnimation';
+import {useStepCounter} from '../../../../hooks/useStepCounter';
+import {circunference} from '../../../../constants/circunference';
 import {connect} from 'react-redux';
 
 const Pedometer = props => {

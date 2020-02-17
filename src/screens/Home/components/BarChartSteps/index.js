@@ -5,13 +5,13 @@ import {
   chartConfigYellow,
   chartConfigLightBlue,
   chartConfigLightRed,
-} from '../../constants/chart';
+} from '../../../../constants/chart';
 import {Container, Pager, CharContainer, CharText} from './styles';
 
 const BarChartSteps = () => {
   return (
     <Container>
-      <Pager scrollEnabled={true} >
+      <Pager scrollEnabled={true}>
         <CharContainer>
           <BarChart
             data={weekdays}
@@ -33,6 +33,7 @@ const BarChartSteps = () => {
             chartConfig={chartConfigLightBlue}
             withInnerLines={false}
             showBarTops={false}
+            fromZero={true}
           />
           <CharText>Calories</CharText>
         </CharContainer>
@@ -44,6 +45,7 @@ const BarChartSteps = () => {
             chartConfig={chartConfigLightRed}
             withInnerLines={false}
             showBarTops={false}
+            fromZero={true}
           />
           <CharText>Distance</CharText>
         </CharContainer>

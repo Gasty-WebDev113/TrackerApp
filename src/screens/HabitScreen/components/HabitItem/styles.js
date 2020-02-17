@@ -26,14 +26,16 @@ export const HabitTitle = styled.Text`
 
 export const PlusHabit = styled.TouchableOpacity`
   position: absolute;
-  height: 110px;
+  height: 100px;
   width: 100px;
   justify-content: center;
   align-self: flex-end;
-  border-radius: 25px;
+  border-radius: 50px;
+  overflow: hidden;
 `;
 
 export const CheckIcon = styled(LottieView)`
-  height: 100%;
-  width: 100%;
+  height: 110%;
+  width: 110%;
+  align-self: center;
 `;

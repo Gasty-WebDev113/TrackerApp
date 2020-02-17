@@ -1,6 +1,6 @@
 import React from 'react';
 import {FlatList} from 'react-native';
-import {CircularProgress} from '../CircularProgress';
+import {HabitItem} from '../HabitItem';
 import {ListContainer, Container, Title, Number} from './styles';
 
 export const ActivityList = () => {
@@ -35,7 +35,7 @@ export const ActivityList = () => {
         data={Data}
         renderItem={({item}) => (
           <Container>
-            <CircularProgress
+            <HabitItem
               activity={item.icon}
               innertext={item.title}
               cardmode={true}

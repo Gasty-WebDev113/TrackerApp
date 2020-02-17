@@ -7,8 +7,8 @@ import {Navigation} from 'react-native-navigation';
 // Header
 import {HeaderContain} from '../components/Header';
 // Screens
-import Home from '../screens/Home';
-import HabitScreen from '../screens/HabitScreen';
+import Home from '../screens/Home/index';
+import HabitScreen from '../screens/HabitScreen/index';
 
 // eslint-disable-next-line require-jsdoc
 function WrappedComponent(Component) {
