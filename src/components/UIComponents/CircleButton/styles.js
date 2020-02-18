@@ -6,7 +6,6 @@ export const Container = styled.View`
   height: ${props => props.size};
   width: ${props => props.size};
   align-self: ${props => props.align};
-  
 `;
 
 export const Touchable = styled.TouchableOpacity``;

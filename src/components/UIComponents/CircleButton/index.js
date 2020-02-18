@@ -34,10 +34,7 @@ export const CircleButton = ({
   buttonstlyleprops,
 }) => {
   return (
-    <Container
-      size={buttonsize}
-      align={buttonalign}
-      >
+    <Container size={buttonsize} align={buttonalign}>
       <Touchable onPress={() => buttonfunction()}>
         <Button background={buttonbackground}>
           <ButtonIcon
