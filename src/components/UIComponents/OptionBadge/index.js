@@ -10,12 +10,11 @@ export const OptionBadge = ({
   borderwidth,
   bordercolor,
   dashed,
+  onpressfunction,
 }) => {
-  console.log(dashed);
   return (
-    <Container>
+    <Container background={background} onPress={() => onpressfunction()}>
       <Badge
-        background={background}
         borderwidth={borderwidth}
         bordercolor={bordercolor}
         textcolor={textcolor}
@@ -43,4 +42,4 @@ OptionBadge.propTypes = {
   borderwidth: PropTypes.number,
   bordercolor: PropTypes.string,
   dashed: PropTypes.bool,
-}
+};
