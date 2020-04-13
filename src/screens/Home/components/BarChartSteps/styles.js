@@ -10,10 +10,9 @@ export const Container = styled.View`
   margin-bottom: 20px;
   background: black;
   padding-top: 30px;
-  padding-left: 25px;
-  padding-right: 25px;
   border-radius: 30px;
   overflow: hidden;
+  justify-content: center;
 `;
 
 export const Pager = styled(ViewPager)`
@@ -23,6 +22,7 @@ export const Pager = styled(ViewPager)`
 export const CharContainer = styled.View`
   height: 100%;
   width: 100%;
+  align-items: center;
 `;
 
 export const CharText = styled.Text`

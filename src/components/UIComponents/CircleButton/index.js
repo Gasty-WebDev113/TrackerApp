@@ -17,6 +17,7 @@ import {Container, Touchable, Button, ButtonIcon, ButtonText} from './styles';
  * @param {int} textsize size of the text
  * @param {("bold" | "lighter" | "normal")} textweight weight of the text
  */
+
 export const CircleButton = ({
   buttonsize,
   buttonbackground,

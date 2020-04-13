@@ -2,6 +2,7 @@ import {createStore, combineReducers} from 'redux';
 import {persistStore, persistReducer} from 'redux-persist';
 import AsyncStorage from '@react-native-community/async-storage';
 import {setpReducer} from './src/reducers/steps';
+import {dateReducer} from './src/reducers/date';
 
 const persistConfig = {
   key: 'root',
@@ -11,6 +12,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   steps: setpReducer,
+  date: dateReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

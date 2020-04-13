@@ -3,8 +3,7 @@
  */
 
 import {Navigation} from 'react-native-navigation';
-import {registerScreens} from './src/navigation/registerScreens';
-
+import {registerScreens} from './src/navigation/registerScreens'; 
 // Yesss, add Wix ReactNativeNavigation
 registerScreens(); // Register the Screens
 
